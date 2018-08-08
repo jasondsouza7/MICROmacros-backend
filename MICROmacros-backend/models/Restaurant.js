@@ -18,7 +18,8 @@ const RestaurantSchema = new Schema({
         required: false
     },
     created_by:{
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: "users",
         required: true
     },
     updated_date:{
@@ -27,14 +28,15 @@ const RestaurantSchema = new Schema({
         required: true
     },
     updated_by:{
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: "users",
         required: true
     }, 
     sublocality_level_1:{   //street name
         type: String,
     },
     locality: {         //area name - barsha etc. 
-        type: Stirng
+        type: String
     },
     administrative_area_level_1:{   //idkwtfthis is 
         type: String
@@ -49,7 +51,9 @@ const RestaurantSchema = new Schema({
     },
     cuisines:[{
         type: Schema.Types.ObjectId,
+        ref : "cuisines"
     }]
 });
 
-module.exports= Restaurant = mongoose.model('restaurants', RestaurantSchema);
+module.exports= mongoose.model('restaurants', RestaurantSchema);
+clearImmediate

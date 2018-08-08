@@ -1,3 +1,6 @@
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
 const BranchesSchema = new Schema({
     latitude:{
         type: String,
@@ -9,4 +12,4 @@ const BranchesSchema = new Schema({
     }     
 });
 
-module.exports= Branches = mongoose.model('branches', BranchesSchema);
+module.exports= mongoose.model('branches', BranchesSchema);

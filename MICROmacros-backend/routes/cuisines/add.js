@@ -3,11 +3,11 @@ const router = express.Router();
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const keys = require('../config/keys');
+const keys = require('../../config/keys');
 const passport = require('passport');
-const fault = require('../utilities/Errors');
+const fault = require('../../utilities/Errors');
 
-
+require('../../models/Cuisines');
 const Cuisine = require('../../models/Cuisines');
 
 router.post('/', (req, res) => {
@@ -19,9 +19,9 @@ router.post('/', (req, res) => {
     const newCuisine = new Cuisine({
             cuisine_name : req.body.cuisine_name,
             dish_created_date: Date.now,
-            dish_created_by: req.user,
+            dish_created_by: req.body.user,
             dish_updated_date: Date.now,
-            dish_updated_by: req.user
+            dish_updated_by: req.body.user
     });
 
     newCuisine

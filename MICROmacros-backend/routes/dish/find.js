@@ -3,11 +3,12 @@ const router = express.Router();
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const keys = require('../config/keys');
+const keys = require('../../config/keys');
 const passport = require('passport');
-const fault = require('../utilities/Errors');
+const fault = require('../../utilities/Errors');
 
-
+require('../../models/Dishes');
+require('../../models/RestaurantDishes');
 const Dish = require('../../models/Dishes');
 const RestDish = require('../../models/RestaurantDishes');
 

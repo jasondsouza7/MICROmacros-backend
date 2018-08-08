@@ -12,7 +12,7 @@ const RestaurantDishesSchema = {
     },
     created_date:{
         type: Date,
-        default: date.now
+        default: Date.now
     },
     update_date:{
         type: Date,
@@ -24,4 +24,4 @@ const RestaurantDishesSchema = {
 
 
 
-module.exports= RestaurantDishes = mongoose.model('restaurantsDishes', RestaurantDishesSchema);
+module.exports= mongoose.model('restaurantsDishes', RestaurantDishesSchema);

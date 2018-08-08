@@ -1,14 +1,18 @@
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
 const CuisineSchema = new Schema({
     cuisine_name:{
         type: String, 
         required: true
     },
     dish_created_date:{
-        type: date.now,
+        type: Date,
         required: true
     },
     dish_created_by:{
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: "users",
         required: true
     },
     dish_updated_date:{
@@ -16,9 +20,10 @@ const CuisineSchema = new Schema({
         required: true
     },
     dish_updated_by:{
-        type: String,
+        type: Schema.Types.ObjectId,
+        ref: "users",
         required: true
     }
 });
 
-module.exports= Cuisines = mongoose.model('cuisines', CuisineSchema);
+module.exports= mongoose.model('cuisines', CuisineSchema);

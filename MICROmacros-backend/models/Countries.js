@@ -1,3 +1,6 @@
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
 const CountriesSchema = new Schema({
     country_name:{
         type: String,
@@ -5,4 +8,4 @@ const CountriesSchema = new Schema({
     }
 });
 
-module.exports= Countries = mongoose.model('countries', CountriesSchema);
+module.exports = mongoose.model('countries', CountriesSchema);

@@ -33,13 +33,13 @@ const UserSchema = new Schema({
         default: Date.now
     },
     active:{
-        type: boolean
+        type: Boolean
     }
 });
 
 
 
-module.exports= User = mongoose.model('users', UserSchema);
+module.exports = mongoose.model('users', UserSchema);
 
 
 

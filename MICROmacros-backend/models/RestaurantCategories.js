@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const RestaurantCategoriesSchema = {
     restaurant:{
         type: Schema.Types.ObjectId,
-        ref: "Restaurant"   //need to run a function called populate
+        ref: "restaurants"   //need to run a function called populate
     },
     category: {
         type: Schema.Types.ObjectId,
@@ -12,7 +12,7 @@ const RestaurantCategoriesSchema = {
     },
     created_date:{
         type: Date,
-        default: date.now
+        default: Date.now
     },
     update_date:{
         type: Date,
@@ -21,4 +21,4 @@ const RestaurantCategoriesSchema = {
 }
 
 
-module.exports= RestaurantCategories = mongoose.model('restaurantsCategories', RestaurantCategoriesSchema);
+module.exports= mongoose.model('restaurantsCategories', RestaurantCategoriesSchema);

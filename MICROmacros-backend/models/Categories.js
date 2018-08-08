@@ -12,11 +12,11 @@ const CategoriesSchema = {
     },
     created_date:{
         type: Date,
-        default: date.now   
+        default: Date.now   
     },
     created_by:{
         type: Schema.Types.ObjectId,
-        ref: "Users"
+        ref: "users"
     },
     update_date:{
         type: Date,
@@ -24,8 +24,8 @@ const CategoriesSchema = {
     },
     updated_by:{
         type: Schema.Types.ObjectId,
-        ref: "Users"
+        ref: "users"
     }
 }
 
-module.exports= Categories = mongoose.model('Categories', CategoriesSchema);
+module.exports= mongoose.model('Categories', CategoriesSchema);

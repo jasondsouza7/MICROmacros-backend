@@ -3,11 +3,11 @@ const router = express.Router();
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const keys = require('../config/keys');
+const keys = require('../../config/keys');
 const passport = require('passport');
-const fault = require('../utilities/Errors');
+const fault = require('../../utilities/Errors');
 
-
+require('../../models/Restaurant');
 const Restaurant = require('../../models/Restaurant');
 
 router.post('/', (req, res) => {
@@ -20,9 +20,9 @@ if(Restaurant) {
        restaurant_name : req.body.restaurant_name,
        location: req.body.location,
        created_date: Date.now,
-       created_by: req.user,
+       created_by: req.body.user,
        updated_date: Date.now,
-       updated_by: req.user,
+       updated_by: req.body.user,
        sublocality_level_1: req.body.sublocality_level_1,
        locality: req.body.locality,
        administrative_area_1: req.body.administrative_area_1,

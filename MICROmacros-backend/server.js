@@ -5,6 +5,7 @@ const _ =require('lodash');
 const bodyParser = require('body-parser');
 const app = express();
 const passport = require('passport');
+//const bcrypt = require('bcryptjs');
 const fs = require('fs');
 
 //bodyParser middleware

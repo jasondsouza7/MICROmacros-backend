@@ -10,7 +10,7 @@ const fault = require('../../utilities/Errors');
 require('../../models/Cuisines');
 const Cuisine = require('../../models/Cuisines');
 
-router.post('/', (req, res) => {
+router.post('/', (req, res, next) => {
 
     Cuisine.findOne({ name: req.body.cuisine_name }).then(Cuisine => {
     if(Cuisine) {

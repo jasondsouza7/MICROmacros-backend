@@ -10,7 +10,7 @@ const fault = require('../../utilities/Errors');
 require('../../models/Restaurant');
 const Restaurant = require('../../models/Restaurant');
 
-router.get('/', (req, res)=>{
+router.get('/', (req, res, next)=>{
 
     const restaurant_name = req.body.name;
     const location = req.body.location;     //return in order of closeness ***

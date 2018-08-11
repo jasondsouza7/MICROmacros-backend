@@ -10,7 +10,7 @@ const fault = require('../../utilities/Errors');
 
 const Cuisine = require('../../models/Cuisines');
 
-router.get('/', (req,res)=> {
+router.get('/', (req,res, next)=> {
 
     const cuisine_name = req.body.cuisine_name;
 

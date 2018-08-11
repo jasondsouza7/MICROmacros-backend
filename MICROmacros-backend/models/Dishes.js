@@ -8,7 +8,7 @@ const DishesSchema = new Schema({
     },
     dish_category:{
         type: Schema.Types.ObjectId,
-        ref: "Categories",
+        ref: "Category",
         required: true
     },
     created_date:{
@@ -17,7 +17,7 @@ const DishesSchema = new Schema({
     },
     created_by:{
         type: Schema.Types.ObjectId,
-        ref: "users",
+        ref: "User",
         required: true
     },
     updated_date:{
@@ -26,9 +26,10 @@ const DishesSchema = new Schema({
     },
     updated_by:{
         type: Schema.Types.ObjectId,
-        ref: "users",
+        ref: "User",
         required: true
     }
 });
 
-module.exports= mongoose.model('dishes', DishesSchema);
+const Dish = mongoose.model('dish', DishesSchema);
+module.exports = Dish;

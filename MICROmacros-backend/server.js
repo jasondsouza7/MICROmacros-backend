@@ -1,16 +1,28 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const glob = require('glob');
-const _ =require('lodash');
-const bodyParser = require('body-parser');
-const app = express();
+const express = require("express");
+const mongoose = require("mongoose");
+const glob = require("glob");
+const _ =require("lodash");
+const bodyParser = require("body-parser");
 const passport = require('passport');
+const exphbs = require("express-handlebars");
+const cors = require('cors');
+const flash = require('connect-flash');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');   //cookie session
 //const bcrypt = require('bcryptjs');
 const fs = require('fs');
+const fault = require('./utilities/Errors');
 
+const app = express();
+
+app.use(cors())
 //bodyParser middleware
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
+
+app.engine("handlebars", exphbs({defaultLayout: "main"}));
+app.set("view-engine", "handlebars");
+
 
 app.use(passport.initialize());
 require('./models/index');
@@ -56,4 +68,5 @@ glob.sync('**/*', { cwd: routePaths }).forEach(route => {
         routeFolders.forEach(route => {     var _pathDeindex = routePaths + route + '/deindex.js'     
         if (fs.existsSync(_pathDeindex))       
         app.use(route, require(_pathDeindex))   
-    })
+    });
+

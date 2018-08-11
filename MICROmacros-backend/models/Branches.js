@@ -12,4 +12,5 @@ const BranchesSchema = new Schema({
     }     
 });
 
-module.exports= mongoose.model('branches', BranchesSchema);
+const Branch = mongoose.model('branch', BranchesSchema);
+module.exports = Branch

@@ -8,7 +8,7 @@ const RestaurantDishesSchema = {
     },
     dish: {
         type: Schema.Types.ObjectId,
-        ref: "Dishes"      //need to run a function called populate
+        ref: "Dish"      //need to run a function called populate
     },
     created_date:{
         type: Date,
@@ -24,4 +24,5 @@ const RestaurantDishesSchema = {
 
 
 
-module.exports= mongoose.model('restaurantsDishes', RestaurantDishesSchema);
+const RestaurantDishes = mongoose.model('restaurantsDishes', RestaurantDishesSchema);
+module.exports = RestaurantDishes;

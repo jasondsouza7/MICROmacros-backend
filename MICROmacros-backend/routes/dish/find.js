@@ -12,7 +12,7 @@ require('../../models/RestaurantDishes');
 const Dish = require('../../models/Dishes');
 const RestDish = require('../../models/RestaurantDishes');
 
-router.get('/', (req,res)=> {
+router.get('/', (req,res,next)=> {
 
     const dish_name = req.body.dish_name;
     const dish_category = req.body.dish_category;

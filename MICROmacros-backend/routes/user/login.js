@@ -12,7 +12,7 @@ const User = require('../../models/User');
 
 // @desc    Login User / Returning JWT Token
 // @access  Public
-router.post('/', (req, res) => {
+router.post('/', (req, res, next) => {
  
   const email = req.body.email;
   const password = req.body.password;
@@ -44,7 +44,7 @@ router.post('/', (req, res) => {
           }
         );
       } else {
-        return res.status(400).json(fault(258));
+        return res.status(204).json(fault(258));
       }
     });
   });

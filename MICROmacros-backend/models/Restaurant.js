@@ -4,12 +4,13 @@ const Schema = mongoose.Schema;
 const RestaurantSchema = new Schema({
     name: {
         type: String,
-        required: true
+        required: [true, 'Name field is required']
     },//check for array for array's validation 
     location: [{
        location_name:{
             type: Schema.Types.ObjectId,
-            required: true
+            ref: "Branch"
+            //required: true
        }  
     }],
     created_date:{
@@ -19,17 +20,17 @@ const RestaurantSchema = new Schema({
     },
     created_by:{
         type: Schema.Types.ObjectId,
-        ref: "users",
+        ref: "User",
         required: true
     },
     updated_date:{
         type: Date,
         default: Date.now,
-        required: true
+        //required: true
     },
     updated_by:{
         type: Schema.Types.ObjectId,
-        ref: "users",
+        ref: "User",
         required: true
     }, 
     sublocality_level_1:{   //street name
@@ -43,17 +44,19 @@ const RestaurantSchema = new Schema({
     },
     country: {
         type: String,
+        ref: "Country",
         required: true
     },
     delivers:{
         type: Boolean,
-        required: true
+        default : false,
+        
     },
     cuisines:[{
         type: Schema.Types.ObjectId,
-        ref : "cuisines"
+        ref : "Cuisine"
     }]
 });
 
-module.exports= mongoose.model('restaurants', RestaurantSchema);
-clearImmediate
+const Restaurant = mongoose.model('restaurant', RestaurantSchema);
+module.exports = Restaurant;

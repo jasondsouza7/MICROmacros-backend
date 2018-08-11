@@ -14,7 +14,7 @@ const Restaurant = require('../../models/Restaurant');
 const Dish = require('../../models/Dishes');
 const RestDish = require('../../models/RestaurantDishes');
 
-router.get('/', (req,res)=> {
+router.get('/', (req,res, next)=> {
     const restaurant_name = req.body.restaurant_name;
     const dish_name = req.body.dish_name;
     const restdish_name = req.body.restdish_name;

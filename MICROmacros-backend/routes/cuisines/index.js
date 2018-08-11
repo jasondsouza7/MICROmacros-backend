@@ -7,8 +7,7 @@ module.exports = router;
 
 router.get(
     '/',
-    authAccess
-//(req,res) => {
-    //res.jsonSuccess()
-//}
-)
+    authAccess,
+(req,res) => {
+    res.jsonSuccess()
+})

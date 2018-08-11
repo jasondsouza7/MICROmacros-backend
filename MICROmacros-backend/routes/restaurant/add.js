@@ -10,19 +10,20 @@ const fault = require('../../utilities/Errors');
 require('../../models/Restaurant');
 const Restaurant = require('../../models/Restaurant');
 
-router.post('/', (req, res) => {
+router.post('/', (req, res, next) => {
 
-Resturant.findOne({ restaurant_name: req.body.restaurant_name }).then(Restaurant => {
-if(Restaurant) {
-    return res.status(400).json(fault(260));
+Restaurant.findOne({ name: req.body.restaurant_name }).then(restaurant => {
+if (restaurant) {
+    return res.status(400).send(fault(260));
 }else{
+    console.log("Creating new Restaurant");
    const newRestaurant = new Restaurant({
-       restaurant_name : req.body.restaurant_name,
+       name : req.body.restaurant_name,
        location: req.body.location,
        created_date: Date.now,
-       created_by: req.body.user,
+       created_by: req.body.created_by,
        updated_date: Date.now,
-       updated_by: req.body.user,
+       updated_by: req.body.updated_by,
        sublocality_level_1: req.body.sublocality_level_1,
        locality: req.body.locality,
        administrative_area_1: req.body.administrative_area_1,
@@ -33,7 +34,8 @@ if(Restaurant) {
 
    newRestaurant
    .save()
-   .then(Restaurant => res.json(Restaurant))
+   .then(restaurant => res.json(restaurant))
+   //.then(restaurant => res.json(restaurant))
    .catch(err => res.json(err));
 }
 });

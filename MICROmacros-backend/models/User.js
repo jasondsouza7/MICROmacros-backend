@@ -14,6 +14,7 @@ const UserSchema = new Schema({
     },
     role: {
         type: String, 
+        ref: "role",
         default: 'client'
     },  
     email: {
@@ -39,7 +40,8 @@ const UserSchema = new Schema({
 
 
 
-module.exports = mongoose.model('users', UserSchema);
+ const User = mongoose.model('user', UserSchema);
+ module.exports = User;
 
 
 

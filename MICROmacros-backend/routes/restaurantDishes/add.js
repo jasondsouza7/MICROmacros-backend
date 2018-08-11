@@ -14,7 +14,7 @@ const Restaurant = require('../../models/Restaurant');
 const Dish = require('../../models/Dishes');
 const RestDish = require('../../models/RestaurantDishes');
 
-router.post('/', (req, res) => {
+router.post('/', (req, res, next) => {
 
 Restaurant.findOne({ name: req.body.resturant_name }).then(restaurant => {
     if(restaurant){

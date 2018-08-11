@@ -12,7 +12,7 @@ const CuisineSchema = new Schema({
     },
     dish_created_by:{
         type: Schema.Types.ObjectId,
-        ref: "users",
+        ref: "User",
         required: true
     },
     dish_updated_date:{
@@ -21,9 +21,10 @@ const CuisineSchema = new Schema({
     },
     dish_updated_by:{
         type: Schema.Types.ObjectId,
-        ref: "users",
+        ref: "User",
         required: true
     }
 });
 
-module.exports= mongoose.model('cuisines', CuisineSchema);
+const Cuisine = mongoose.model('cuisine', CuisineSchema);
+module.exports = Cuisine;

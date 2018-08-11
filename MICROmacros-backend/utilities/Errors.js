@@ -1,11 +1,14 @@
+const express = require('express')
+const router = express.Router()
+module.exports = router;
 
 const Errors = {
     "400" : "success",
     "250": "Error generating hashed token",
-    "251": "This app sucks",
+    "251": "Email already exists",
     "252" : "Cannot find location",
     "253" : "Cannot location record",
-    "254": "Cannot access table",
+    "254" : "Cannot access table",
     "255" : "Service is down",
     "256" : "Cannot authenticate User",
     "257" : "User does not exist",
@@ -21,8 +24,9 @@ const Errors = {
 }
 
 
-module.exports = function generateError(ErrCode){
+const fault = function generateError(ErrCode){
     
 return new Error(Errors[ErrCode]);
 
 }
+module.exports = fault;

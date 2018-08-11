@@ -12,11 +12,13 @@ require('../../models/User');
 const User = require('../../models/User');
 
 
-router.post('/', (req, res) => {
+router.post('/', (req, res, next) => {
  
     User.findOne({ email: req.body.email }).then(user => {
     if (user) {
-        return res.status(400).json({email:"Email already exists"});
+      return res.status(400).send(fault(251));
+      // console.log(fault(251));  
+      // return res.status(400).json(fault(251));
       } else {
         const avatar = gravatar.url(req.body.email, {
           s: '200', // Size
@@ -33,7 +35,7 @@ router.post('/', (req, res) => {
   
         bcrypt.genSalt(10, (err, salt) => {
           bcrypt.hash(newUser.password, salt, (err, hash) => {
-            if (err) throw fault(250);
+            if(err) throw fault(250);
             newUser.password = hash;
             newUser
               .save()
